@@ -24,8 +24,7 @@ def main():
 	player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 	asteroid_field = AsteroidField()
 
-	
-	
+
 	print("Starting Asteroids!",
 	   "Screen width: 1280",
 	   "Screen height: 720")
@@ -42,6 +41,16 @@ def main():
 			if player.is_colliding(asteroid):
 				print("GAME OVER!")
 				sys.exit()
+
+		for asteroid in asteroids:
+			asteroid.update(dt)
+		
+		for asteroid in asteroids:	
+			for shot in all_shots:
+				if shot.is_colliding(asteroid):
+					print("Collision detected!")
+					asteroid.kill()
+					shot.kill()
 		
 		screen.fill((0, 0, 0))
 		for drawable_sprite in drawable:
