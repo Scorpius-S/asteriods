@@ -49,6 +49,11 @@ def main():
 			for shot in all_shots:
 				if shot.is_colliding(asteroid):
 					print("Collision detected!")
+					new_asteroids = asteroid.split()
+					for new_asteroid in new_asteroids:
+						asteroids.add(new_asteroid)
+						updatable.add(new_asteroid)
+						drawable.add(new_asteroid)
 					asteroid.kill()
 					shot.kill()
 		
